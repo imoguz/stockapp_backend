@@ -27,7 +27,7 @@ module.exports = {
       html = `
         <h3>Dear user,</h3>
         <h4>You have been requested to verify your A Company account:</h4>
-        <h4>Verification Link: http://127.0.0.1:8000/stock/users/verify?id=${
+        <h4>Verification Link:https://stockapp-green.vercel.app/stock/users/verify?id=${
           data._id
         }&verifyCode=${encrypt(data.email)}</h4>`;
     sendEmail(to, subject, html);
@@ -52,7 +52,7 @@ module.exports = {
       }
     );
     if (verifiedAccount) {
-      res.status(302).redirect("http://localhost:3000/");
+      res.status(302).redirect("https://stockapp-green.vercel.app/");
       // res.json({ message: "Account successfully verified." });
     } else {
       res.status(500).send({
