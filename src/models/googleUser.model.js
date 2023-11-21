@@ -6,26 +6,22 @@ const googleUserSchema = new Schema(
   {
     firstname: {
       type: String,
-      required: true,
       trim: true,
     },
 
     lastname: {
       type: String,
-      required: true,
       trim: true,
     },
 
     email: {
       type: String,
-      required: true,
       trim: true,
       unique: true,
     },
 
     uid: {
       type: String,
-      required: true,
       trim: true,
     },
 
