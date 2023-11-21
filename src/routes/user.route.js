@@ -13,7 +13,6 @@ const {
 } = require("../controllers/user.controller");
 
 router.route("/verify").get(verify);
-
 router.route("/").get(isLogin, readMany).post(create);
 
 router
