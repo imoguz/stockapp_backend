@@ -22,7 +22,7 @@ module.exports = async (auth, refresh) => {
     return { error: "Incorrect user information or inactive user" };
   }
   const accessToken = jwt.sign(user.toJSON(), process.env.TOKEN_KEY, {
-    expiresIn: "10m",
+    expiresIn: "1h",
   });
 
   const refreshToken =
@@ -34,7 +34,7 @@ module.exports = async (auth, refresh) => {
   const tokenData = {
     accessToken,
     refreshToken,
-    accessExpired: expiredDate(1 / 6),
+    accessExpired: expiredDate(1),
     refreshExpired: expiredDate(24),
   };
   return { tokenData, user };
