@@ -18,7 +18,7 @@ module.exports = async (auth, refresh) => {
     email,
     password: passwordEncrypt(password),
   });
-  if (!user || !user.isActive || !user.isVerified) {
+  if (!user || !user.isActive) {
     return { error: "Incorrect user information or inactive user" };
   }
   const accessToken = jwt.sign(user.toJSON(), process.env.TOKEN_KEY, {

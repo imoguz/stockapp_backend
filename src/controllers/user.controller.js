@@ -1,8 +1,6 @@
 "use strict";
 
 const User = require("../models/user.model");
-const encrypt = require("../helpers/passwordEncrypt");
-const sendEmail = require("../helpers/sendEmail");
 
 module.exports = {
   create: async (req, res) => {
@@ -22,43 +20,7 @@ module.exports = {
         }
     */
     const data = await User.create(req.body);
-    const to = data.email,
-      subject = "Account verification",
-      html = `
-        <h3>Dear user,</h3>
-        <h4>You have been requested to verify your A Company account:</h4>
-        <h4>Verification Link:https://stockapp-green.vercel.app/stock/users/verify?id=${
-          data._id
-        }&verifyCode=${encrypt(data.email)}</h4>`;
-    sendEmail(to, subject, html);
     res.status(201).send(data);
-  },
-
-  verify: async (req, res) => {
-    // #swagger.ignore = true
-
-    const { id, verifyCode } = req.query || null;
-    const data = await User.findOne({ _id: id });
-    if (!data || verifyCode != encrypt(data.email)) {
-      res.send("Incorrect verification code.");
-    }
-
-    const verifiedAccount = await User.findByIdAndUpdate(
-      { _id: req.query.id },
-      { isVerified: true },
-      {
-        runValidators: true,
-        new: true,
-      }
-    );
-    if (verifiedAccount) {
-      res.status(302).redirect("https://stockapp-green.vercel.app/");
-      // res.json({ message: "Account successfully verified." });
-    } else {
-      res.status(500).send({
-        message: "An error occurred during verification",
-      });
-    }
   },
 
   readOne: async (req, res) => {
