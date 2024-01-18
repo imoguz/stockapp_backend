@@ -14,11 +14,11 @@ module.exports = async (auth, refresh) => {
     return { error: "Email and google uid are required" };
   }
   const user = await GoogleUser.findOne({ email, uid });
-  if (!user || !user.isActive || !user.isVerified) {
+  if (!user || !user.isActive) {
     return { error: "Incorrect user information or inactive user" };
   }
   const accessToken = jwt.sign(user.toJSON(), process.env.TOKEN_KEY, {
-    expiresIn: "10m",
+    expiresIn: "2h",
   });
 
   const refreshToken =
@@ -29,7 +29,7 @@ module.exports = async (auth, refresh) => {
   const tokenData = {
     accessToken,
     refreshToken,
-    accessExpired: expiredDate(1 / 6),
+    accessExpired: expiredDate(2),
     refreshExpired: expiredDate(24),
   };
   return { tokenData, user };
