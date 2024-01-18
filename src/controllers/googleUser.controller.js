@@ -1,7 +1,6 @@
 "use strict";
 
 const GoogleUser = require("../models/googleUser.model");
-const jwt = require("jsonwebtoken");
 const setGoogleUserToken = require("../helpers/setGoogleUserToken");
 
 module.exports = {
@@ -17,7 +16,7 @@ module.exports = {
           "lastname": "String",
           "email": "String",
           "uid": "String",
-          "image": "string"
+          "image": "String",
           }
         }
     */
@@ -71,7 +70,7 @@ module.exports = {
           "lastname": "String",
           "email": "String",
           "uid": "String",
-          "image": "string"
+          "image": "String",
           "isActive": "Boolean",
           }
         }
@@ -107,8 +106,8 @@ module.exports = {
         in: 'body',
         required: true,
         schema: {
-          "email": 'google provider',
-          "uid": 'google provider'
+          "email": 'String',
+          "uid": 'String',
         }
       }
     */

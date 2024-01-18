@@ -30,11 +30,6 @@ const googleUserSchema = new Schema(
       trim: true,
     },
 
-    isVerified: {
-      type: Boolean,
-      default: false,
-    },
-
     isActive: {
       type: Boolean,
       default: true,

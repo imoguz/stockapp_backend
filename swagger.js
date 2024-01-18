@@ -16,7 +16,7 @@ const document = {
     contact: { name: packagejson.author, email: "imoguz0510@gmail.com" },
     license: { name: packagejson.license },
   },
-  host: `${HOST}:${PORT}`,
+  host: "stockapp-backend-omega.vercel.app",
   basePath: "/",
   schemes: ["http", "https"],
   securityDefinitions: {

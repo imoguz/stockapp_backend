@@ -13,7 +13,7 @@
       "name": "ISC"
     }
   },
-  "host": "127.0.0.1:8000",
+  "host": "stockapp-backend-omega.vercel.app",
   "basePath": "/",
   "schemes": [
     "http",
@@ -385,7 +385,7 @@
                 },
                 "image": {
                   "type": "string",
-                  "example": "string"
+                  "example": "String"
                 }
               }
             }
@@ -420,11 +420,11 @@
               "properties": {
                 "email": {
                   "type": "string",
-                  "example": "google provider"
+                  "example": "String"
                 },
                 "uid": {
                   "type": "string",
-                  "example": "google provider"
+                  "example": "String"
                 }
               }
             }
@@ -483,6 +483,40 @@
             "name": "authorization",
             "in": "header",
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstname": {
+                  "type": "string",
+                  "example": "String"
+                },
+                "lastname": {
+                  "type": "string",
+                  "example": "String"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "String"
+                },
+                "uid": {
+                  "type": "string",
+                  "example": "String"
+                },
+                "image": {
+                  "type": "string",
+                  "example": "String"
+                },
+                "isActive": {
+                  "type": "string",
+                  "example": "Boolean"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -1819,18 +1853,6 @@
             "trim": {
               "type": "boolean",
               "example": true
-            }
-          }
-        },
-        "isVerified": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "default": {
-              "type": "boolean",
-              "example": false
             }
           }
         },

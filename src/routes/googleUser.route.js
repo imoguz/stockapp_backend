@@ -13,7 +13,6 @@ const {
 
 router.route("/").get(readMany).post(create);
 router.route("/login").post(login);
-
 router.route("/:id").get(readOne).put(update).delete(_delete);
 
 module.exports = router;
