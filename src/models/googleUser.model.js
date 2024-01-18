@@ -18,6 +18,7 @@ const googleUserSchema = new Schema(
       type: String,
       trim: true,
       unique: true,
+      required: true,
     },
 
     uid: {
